@@ -4,6 +4,14 @@ const HomePage = () => {
   return (
     <div className="relative">
       <Image
+        className="club-header__badge club-badge--small club-badge--full-width"
+        src="https://resources.premierleague.com/premierleague/badges/t43.png"
+        alt="Man City Club Badge"
+        width={50}
+        height={50}
+      />
+
+      {/* <Image
         src="/assets/image/header.svg"
         alt="home-header"
         width={2000}
@@ -27,7 +35,7 @@ const HomePage = () => {
         <button className="font-bebas text-xl bg-custom-green w-24 h-9 text-black">
           START
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
