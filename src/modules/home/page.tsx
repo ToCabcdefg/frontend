@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SearchFilter from "../searchFilter/searchFilter";
 
 const HomePage = () => {
   return (
@@ -27,8 +28,14 @@ const HomePage = () => {
         <button className="font-bebas text-xl bg-custom-green w-24 h-9 text-black">
           START
         </button>
+        
       </div>
+      
+      <SearchFilter
+      
+      />
     </div>
+    
   );
 };
 
