@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SearchFilter from "../searchFilter/searchFilter";
 
 const HomePage = () => {
   return (
@@ -66,7 +67,12 @@ const HomePage = () => {
             <img src="/assets/image/Liverpool.svg" alt="Liverpool" />
             <img src="/assets/image/ManCity.svg" alt="Manchester City" />
           </div>
+        
       </div>
+      
+      <SearchFilter
+      
+      />
     </div>
     
   );
