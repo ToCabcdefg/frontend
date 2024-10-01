@@ -35,10 +35,11 @@ body {
   animation: scroll 30s linear infinite;
 
 }
+
 .logos {
   display: flex;
   white-space: nowrap;
-  
+
 }
 
 .logos img {
@@ -49,14 +50,15 @@ body {
 }
 
 .logos img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 @keyframes scroll {
   0% {
-      transform: translateX(0%);
+    transform: translateX(0%);
   }
+
   100% {
-      transform: translateX(-60.7%);
+    transform: translateX(-60.7%);
   }
 }
