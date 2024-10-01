@@ -7,7 +7,7 @@ import {
   Column,
   TableInstance,
 } from "react-table";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import SearchBar from "./search-bar";
 import Image from "next/image";
@@ -54,6 +54,7 @@ interface MyTableProps {
 }
 
 const Table: React.FC<MyTableProps> = ({ data, showSearch = true }) => {
+  const router = useRouter();
   const {
     getTableProps,
     getTableBodyProps,
@@ -140,6 +141,8 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = true }) => {
                           className={`px-4 py-2 font-bayon tracking-widest text-xl align-top whitespace-nowrap ${
                             cell.column.Header === "NAME"
                               ? "hover:text-custom-pink sticky hover:cursor-pointer left-0 z-10 bg-black"
+                              : cell.column.Header === "CLUB"
+                              ? "hover:text-custom-pink sticky hover:cursor-pointer"
                               : ""
                           } ${
                             cell.column.Header === "HEIGHT (CM)" ||
@@ -148,6 +151,13 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = true }) => {
                               : "pr-20"
                           }`}
                           key={cell.value}
+                          onClick={
+                            cell.column.Header === "NAME"
+                              ? () => router.replace("/profile")
+                              : cell.column.Header === "CLUB"
+                              ? () => router.replace("/club")
+                              : () => console.log("click")
+                          }
                         >
                           {cell.render("Cell")}
                         </td>
