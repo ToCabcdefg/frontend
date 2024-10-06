@@ -1,6 +1,7 @@
 "use client";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./SearchFilter.module.css"; // Import the CSS module
+import axios from "axios";
 
 type ClubData = {
   club_name: string;
@@ -23,11 +24,12 @@ type PlayerData = {
   goals_cleansheets: number;
   minute_played: number;
 };
+
 type Props = {
-  setFilterPlayers: Dispatch<SetStateAction<PlayerData[] | null>>;
+  setPlayers: Dispatch<SetStateAction<PlayerData[] | null>>;
 };
 
-export default function SearchFilter({ setFilterPlayers }: Props) {
+export default function SearchFilter({ setPlayers }: Props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);
   const players = [
@@ -44,9 +46,9 @@ export default function SearchFilter({ setFilterPlayers }: Props) {
     setSearchTerm(e.target.value);
   };
 
-  const toggleFilter = () => {
-    setFilterOpen(!filterOpen);
-  };
+  // const toggleFilter = () => {
+  //   setFilterOpen(!filterOpen);
+  // };
 
   const downloadCSV = () => {
     const csvContent = "data:text/csv;charset=utf-8,Player Name,Data\n";
@@ -62,6 +64,18 @@ export default function SearchFilter({ setFilterPlayers }: Props) {
     .filter((player) => player.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((a, b) => a.localeCompare(b));
 
+  const handleOnClick = async () => {
+    console.log(searchTerm);
+    const { data } = await axios.get(
+      `https://toc-backend.codespacebar.com/api/search/${searchTerm}`
+    );
+    setPlayers(data.players);
+  };
+
+  // useEffect(() => {
+  //   console.log(searchTerm);
+  // }, [searchTerm]);
+
   return (
     <div className={styles.searchFilterContainer}>
       <input
@@ -71,7 +85,9 @@ export default function SearchFilter({ setFilterPlayers }: Props) {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <button className={styles.searchButton}>SEARCH</button>
+      <button className={styles.searchButton} onClick={handleOnClick}>
+        SEARCH
+      </button>
       <button className={styles.csvButton} onClick={downloadCSV}>
         DOWNLOAD CSV
       </button>

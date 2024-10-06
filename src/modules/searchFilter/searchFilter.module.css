@@ -68,26 +68,24 @@
   padding: 10px;
   color: black;
   cursor: pointer;
-  font-weight: bold;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .csvButton {
-  background-color: #04f06a;
+  background-color: #ff206e;
   border: none;
   padding: 10px;
-  color: black;
+  color: white;
   margin-left: 20px;
   cursor: pointer;
-  font-weight: bold;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   /* Make CSV button text bold */
 }
 
 .csvButton:hover {
-  box-shadow: 0px 0px 19.152px #04f06a, 0px 0px 10.944px #04f06a,
-    0px 0px 6.384px #04f06a, 0px 0px 3.192px #04f06a, 0px 0px 0.912px #04f06a,
-    0px 0px 0.456px #04f06a;
+  box-shadow: 0px 0px 19.152px #ff206e, 0px 0px 10.944px #ff206e,
+    0px 0px 6.384px #ff206e, 0px 0px 3.192px #ff206e, 0px 0px 0.912px #ff206e,
+    0px 0px 0.456px #ff206e;
 }
 
 .configureColumnsButton {
