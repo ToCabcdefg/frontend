@@ -53,28 +53,41 @@
   border: none;
   background-color: #fff;
   width: 50%;
+  color: black;
 }
 
 /* Button styles */
+.searchButton:hover {
+  box-shadow: 0px 0px 19.152px #04f06a, 0px 0px 10.944px #04f06a,
+    0px 0px 6.384px #04f06a, 0px 0px 3.192px #04f06a, 0px 0px 0.912px #04f06a,
+    0px 0px 0.456px #04f06a;
+}
 .searchButton {
-  background-color: #00ff00;
+  background-color: #04f06a;
   border: none;
   padding: 10px;
   color: black;
   cursor: pointer;
   font-weight: bold;
-  /* Make search button text bold */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .csvButton {
-  background-color: #00ff00;
+  background-color: #04f06a;
   border: none;
   padding: 10px;
   color: black;
   margin-left: 20px;
   cursor: pointer;
   font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   /* Make CSV button text bold */
+}
+
+.csvButton:hover {
+  box-shadow: 0px 0px 19.152px #04f06a, 0px 0px 10.944px #04f06a,
+    0px 0px 6.384px #04f06a, 0px 0px 3.192px #04f06a, 0px 0px 0.912px #04f06a,
+    0px 0px 0.456px #04f06a;
 }
 
 .configureColumnsButton {

@@ -9,7 +9,8 @@ const nextConfig = {
                 pathname: '/premierleague/**',
             },
         ],
+        domains: ['resources.premierleague.com'], 
     },
-};
+      }
 
 export default nextConfig;

@@ -1,11 +1,48 @@
-'use client';
-import React, { useState } from "react";
-import Image from "next/image";
-import SearchBar from "@/components/search-bar";
+"use client";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import styles from "./SearchFilter.module.css"; // Import the CSS module
 
-export default function SearchFilter() {
-  const [search, setSearch] = useState<string>('');
+type ClubData = {
+  club_name: string;
+  club_logo: string;
+};
+
+type PlayerData = {
+  name: string;
+  nationality: string;
+  date_of_birth: string;
+  height: number;
+  club: ClubData;
+  position: string;
+
+  number: number;
+  salary: string;
+  club_history: string[];
+  awards: string[];
+  appearances: number;
+  goals_cleansheets: number;
+  minute_played: number;
+};
+type Props = {
+  setFilterPlayers: Dispatch<SetStateAction<PlayerData[] | null>>;
+};
+
+export default function SearchFilter({ setFilterPlayers }: Props) {
+  const [searchTerm, setSearchTerm] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);
+  const players = [
+    "Lionel Messi",
+    "Cristiano Ronaldo",
+    "Neymar Jr",
+    "Kylian Mbappé",
+    "Kevin De Bruyne",
+    "Mohamed Salah",
+    "Virgil van Dijk",
+  ];
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
@@ -21,71 +58,38 @@ export default function SearchFilter() {
     link.click();
   };
 
+  const filteredPlayers = players
+    .filter((player) => player.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => a.localeCompare(b));
+
   return (
-    <div className="flex items-center justify-between max-w-full w-full h-[36px]">
-      <div className="flex justify-between gap-[10px] h-full">
-        <div className="relative">
-          <button className="flex items-center font-bebas text-[16px] bg-white text-black px-[15px] h-full border-none rounded-[20px]" onClick={toggleFilter}>
-            FILTERED BY ▼
-          </button>
-          {filterOpen && (
-            <ul className="">
-              <li>Option 1</li>
-              <li>Option 2</li>
-              <li>Option 3</li>
-            </ul>
-          )}
-        </div>
-        <SearchBar search={search} setSearch={setSearch} />
-        <button className="font-bebas bg-custom-green w-[95px] h-[36px] text-black tracking-wider">SEARCH</button>
+    <div className={styles.searchFilterContainer}>
+      <input
+        type="text"
+        className={styles.searchInput}
+        placeholder="Find your favorite player..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
+      <button className={styles.searchButton}>SEARCH</button>
+      <button className={styles.csvButton} onClick={downloadCSV}>
+        DOWNLOAD CSV
+      </button>
+      <div>
+        {filteredPlayers.length > 0 ? (
+          <ul>
+            {filteredPlayers.map((player) => (
+              <li key={player}>{player}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No players found.</p>
+        )}
       </div>
 
-      <div className="flex justify-between items-center bg-custom-green h-full w-[163px] px-[16px]">
-        <button className="font-bebas h-full text-black tracking-wider">DOWNLOAD CSV</button>
-        <Image
-          src="/assets/image/Download.svg"
-          alt="download"
-          width={18}
-          height={18}
-        />
-      </div>
+      {/* <button className={styles.configureColumnsButton}>
+        CONFIGURE COLUMNS
+      </button> */}
     </div>
-    // <div className="flex items-center justify-between p-[10px] max-w-full w-full">
-    //   <div className="flex justify-between gap-[5px]">
-    //     <div className={styles.filterDropdown}>
-    //       <button className="font-bebas text-xl bg-white text-black py-[2px] px-[15px] border-none rounded-[20px]" onClick={toggleFilter}>
-    //         FILTERED BY ▼
-    //       </button>
-    //       {filterOpen && (
-    //         <ul className={styles.dropdownMenu}>
-    //           <li>Option 1</li>
-    //           <li>Option 2</li>
-    //           <li>Option 3</li>
-    //         </ul>
-    //       )}
-    //     </div>
-    //     <input
-    //       type="text"
-    //       className="h-[36px]"
-    //       placeholder="Find your favorite player..."
-    //       value={searchTerm}
-    //       onChange={handleSearchChange}
-    //     />
-    //     <button className="font-bebas text-xl bg-custom-green w-[95px] h-[36px] text-black">SEARCH</button>
-    //   </div>
-
-    //   <div className="flex justify-between items-center bg-custom-green h-[36px] w-[163px] px-[16px]">
-    //     <button className="font-bebas text-xl text-black">DOWNLOAD CSV</button>
-    //     <Image
-    //       src="/assets/image/Download.svg"
-    //       alt="download"
-    //       width={18}
-    //       height={18}
-    //     />
-    //   </div>
-    //   {/* <button className={styles.configureColumnsButton}>
-    //     CONFIGURE COLUMNS
-    //   </button> */}
-    // </div>
   );
 }

@@ -1,139 +1,195 @@
+"use client";
+
+import Image from "next/image";
 import Table from "../../components/table";
+import { useRouter } from "next/navigation";
 
 const ClubPage = () => {
+  const router = useRouter();
   const data = [
     {
-      name: "Erling Haaland",
-      nationality: "Norway",
-      date_of_birth: "21/07/2000",
-      height: 194,
-      club: "Manchester City",
-      position: "Forward",
-      number: 9,
-      salary: "£375,000",
-      club_history: [
-        "2016-2017 Bryne FK",
-        "2017-2018 Molde FK",
-        "2019-2020 Red Bull Salzburg",
-        "2020-2022 Borussia Dortmund",
-        "2022-2024 Manchester City",
-      ],
-      awards: [
-        "Golden Boot (2)",
-        "Player of the Season (1)",
-        "Young Player of the Season (1)",
-        "Premier League Champion (2)",
-        "Player of the Month (3)",
-      ],
-      appearances: 71,
-      goals: 73,
-      wins: 52,
-      losses: 7,
-    },
-    {
       name: "Lionel Messi",
-      nationality: "Argentina",
-      date_of_birth: "24/06/1987",
+      nationality: "Argentinian",
+      date_of_birth: "1987-06-24",
       height: 170,
-      club: "Paris Saint-Germain",
+      club: "Inter Miami CF",
       position: "Forward",
-      number: 30,
-      salary: "€1,200,000",
-      club_history: [
-        "2004-2021 FC Barcelona",
-        "2021-2023 Paris Saint-Germain",
-        "2023-2024 Inter Miami",
-      ],
+      number: 10,
+      salary: "$50 million",
+      club_history: ["Barcelona", "Paris Saint-Germain", "Inter Miami CF"],
       awards: [
-        "Ballon d'Or (7)",
-        "FIFA World Cup Champion (1)",
-        "La Liga Champion (10)",
-        "UEFA Champions League Winner (4)",
+        "Ballon d'Or (7x)",
+        "FIFA World Cup Winner",
+        "UEFA Champions League Winner (4x)",
       ],
-      appearances: 778,
-      goals: 672,
-      wins: 540,
-      losses: 92,
+      appearances: 1045,
+      goals_cleansheets: 804,
+      minute_played: 721,
     },
     {
       name: "Cristiano Ronaldo",
-      nationality: "Portugal",
-      date_of_birth: "05/02/1985",
+      nationality: "Portuguese",
+      date_of_birth: "1985-02-05",
       height: 187,
       club: "Al Nassr",
       position: "Forward",
       number: 7,
-      salary: "€200,000",
+      salary: "$60 million",
       club_history: [
-        "2002-2003 Sporting CP",
-        "2003-2009 Manchester United",
-        "2009-2018 Real Madrid",
-        "2018-2021 Juventus",
-        "2021-2022 Manchester United",
-        "2022-2024 Al Nassr",
+        "Sporting CP",
+        "Manchester United",
+        "Real Madrid",
+        "Juventus",
+        "Al Nassr",
       ],
       awards: [
-        "Ballon d'Or (5)",
-        "FIFA World Cup Best Player",
-        "UEFA Champions League Winner (5)",
-        "La Liga Champion (2)",
-        "Premier League Champion (3)",
+        "Ballon d'Or (5x)",
+        "UEFA Champions League Winner (5x)",
+        "UEFA Euro Winner",
       ],
-      appearances: 894,
-      goals: 700,
-      wins: 620,
-      losses: 95,
+      appearances: 1145,
+      goals_cleansheets: 847,
+      minute_played: 743,
     },
     {
-      name: "Kylian Mbappe",
-      nationality: "France",
-      date_of_birth: "20/12/1998",
+      name: "Neymar Jr.",
+      nationality: "Brazilian",
+      date_of_birth: "1992-02-05",
+      height: 175,
+      club: "Al Hilal",
+      position: "Forward",
+      number: 10,
+      salary: "$45 million",
+      club_history: ["Santos", "Barcelona", "Paris Saint-Germain", "Al Hilal"],
+      awards: [
+        "FIFA Puskás Award",
+        "Olympic Gold Medal",
+        "Copa Libertadores Winner",
+      ],
+      appearances: 615,
+      goals_cleansheets: 420,
+      minute_played: 422,
+    },
+    {
+      name: "Kylian Mbappé",
+      nationality: "French",
+      date_of_birth: "1998-12-20",
       height: 178,
       club: "Paris Saint-Germain",
       position: "Forward",
       number: 7,
-      salary: "€500,000",
-      club_history: ["2015-2017 AS Monaco", "2017-2024 Paris Saint-Germain"],
+      salary: "$72 million",
+      club_history: ["AS Monaco", "Paris Saint-Germain"],
       awards: [
-        "FIFA World Cup Champion (1)",
-        "Ligue 1 Champion (4)",
-        "French Player of the Year (3)",
+        "FIFA World Cup Winner",
+        "Ligue 1 Player of the Year (4x)",
+        "UEFA Champions League Runner-up",
       ],
-      appearances: 290,
-      goals: 180,
-      wins: 210,
-      losses: 40,
+      appearances: 351,
+      goals_cleansheets: 274,
+      minute_played: 257,
     },
     {
       name: "Kevin De Bruyne",
-      nationality: "Belgium",
-      date_of_birth: "28/06/1991",
+      nationality: "Belgian",
+      date_of_birth: "1991-06-28",
       height: 181,
       club: "Manchester City",
       position: "Midfielder",
       number: 17,
-      salary: "£350,000",
+      salary: "$25 million",
+      club_history: ["Genk", "Chelsea", "Wolfsburg", "Manchester City"],
+      awards: [
+        "Premier League Player of the Season (2x)",
+        "UEFA Champions League Winner",
+        "FIFA FIFPro World XI",
+      ],
+      appearances: 600,
+      goals_cleansheets: 125,
+      minute_played: 420,
+    },
+    {
+      name: "Virgil van Dijk",
+      nationality: "Dutch",
+      date_of_birth: "1991-07-08",
+      height: 193,
+      club: "Liverpool",
+      position: "Defender",
+      number: 4,
+      salary: "$15 million",
+      club_history: ["Groningen", "Celtic", "Southampton", "Liverpool"],
+      awards: [
+        "UEFA Men's Player of the Year",
+        "Premier League Player of the Season",
+        "UEFA Champions League Winner",
+      ],
+      appearances: 487,
+      goals_cleansheets: 49,
+      minute_played: 312,
+    },
+    {
+      name: "Robert Lewandowski",
+      nationality: "Polish",
+      date_of_birth: "1988-08-21",
+      height: 185,
+      club: "Barcelona",
+      position: "Forward",
+      number: 9,
+      salary: "$35 million",
       club_history: [
-        "2009-2012 Genk",
-        "2012-2014 Chelsea",
-        "2014-2015 Wolfsburg",
-        "2015-2024 Manchester City",
+        "Lech Poznań",
+        "Borussia Dortmund",
+        "Bayern Munich",
+        "Barcelona",
       ],
       awards: [
-        "Premier League Champion (4)",
-        "Player of the Season (2)",
-        "Assist King (3)",
+        "FIFA Best Men's Player",
+        "European Golden Shoe (2x)",
+        "UEFA Champions League Winner",
       ],
-      appearances: 320,
-      goals: 65,
-      wins: 250,
-      losses: 30,
+      appearances: 773,
+      goals_cleansheets: 621,
+      minute_played: 510,
     },
   ];
 
   return (
-    <div className="p-20">
-      <Table data={data} showSearch />
+    <div className="relative">
+      <Image
+        src="/assets/image/club-header.svg"
+        alt="club-bg"
+        width={2000}
+        height={300}
+      />
+      <div className="flex gap-8 absolute top-48 left-[10%]">
+        <div>
+          <Image
+            src="/assets/image/green-back.svg"
+            alt="back"
+            width="50"
+            height="50"
+            className="cursor-pointer relative top-1/3"
+            onClick={() => router.back()}
+          />
+        </div>
+        <div>
+          <Image
+            src="/assets/image/Chelsea.svg"
+            height={140}
+            width={140}
+            alt="club-header"
+          />
+        </div>
+        <div className="font-racing text-[64px] relative">
+          <p>Chelseas</p>
+          <p className="text-transparent text-stroke-2-white absolute top-12">
+            Players
+          </p>
+        </div>
+      </div>
+      <div className="pr-10 pl-10">
+        <Table data={data} />
+      </div>
     </div>
   );
 };
