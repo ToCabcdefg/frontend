@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -25,6 +25,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 .navbar {
@@ -33,12 +42,12 @@ body {
   position: relative;
   width: 260%;
   animation: scroll 30s linear infinite;
-
 }
+
 .logos {
   display: flex;
   white-space: nowrap;
-  
+
 }
 
 .logos img {
@@ -49,14 +58,15 @@ body {
 }
 
 .logos img:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 @keyframes scroll {
   0% {
-      transform: translateX(0%);
+    transform: translateX(0%);
   }
+
   100% {
-      transform: translateX(-60.7%);
+    transform: translateX(-60.7%);
   }
 }
