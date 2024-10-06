@@ -70,7 +70,7 @@ const ProfilePage = ({
       <div className="absolute inset-0 flex items-center justify-center tracking-wider">
         <div className="flex flex-row justify-between gap-10 items-start p-16 isolate absolute  bg-gradient-to-r from-transparent to-gray-300/25 backdrop-blur-md rounded-3xl">
         <div className="absolute w-[47px] h-[47px] left-[24px] top-[35px] flex-none order-1 flex-grow-0 z-1">
-          <Image src="/assets/image/green-back.svg" alt="player" width="50" height="50" />
+          <Image src="/assets/image/green-back.svg" alt="back" width="50" height="50" />
         </div>
           
           {/* Column 1 */}
