@@ -31,8 +31,8 @@ body {
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
@@ -42,7 +42,6 @@ body {
   position: relative;
   width: 260%;
   animation: scroll 30s linear infinite;
-
 }
 
 .logos {

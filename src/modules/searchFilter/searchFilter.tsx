@@ -1,16 +1,11 @@
 'use client';
 import React, { useState } from "react";
 import Image from "next/image";
-// import styles from './SearchFilter.module.css'; // Import the CSS module
-
+import SearchBar from "@/components/search-bar";
 
 export default function SearchFilter() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState<string>('');
   const [filterOpen, setFilterOpen] = useState(false);
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
@@ -41,13 +36,7 @@ export default function SearchFilter() {
             </ul>
           )}
         </div>
-        <input
-          type="text"
-          className="w-[400px] font-bayon text-xs py-[8.5px] px-[15px] placeholder-custom-gray tracking-widest"
-          placeholder="Find your favorite player..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
+        <SearchBar search={search} setSearch={setSearch} />
         <button className="font-bebas bg-custom-green w-[95px] h-[36px] text-black tracking-wider">SEARCH</button>
       </div>
 

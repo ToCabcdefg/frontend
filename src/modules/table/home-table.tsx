@@ -1,28 +1,32 @@
 import Image from "next/image";
+import Table from "@/components/table";
 
-export default function Table() {
+export default function HomeTable() {
     return (
-        <div className="grid gap-[32px] mt-[57px]">
-            <div className="flex justify-center gap-[8px] w-[176px] h-[36px] bg-custom-pink">
-                <Image
-                    src="/assets/image/ConfigureButton.svg"
-                    alt="button"
-                    width={18}
-                    height={18}
-                />
-                <button className="font-bebas tracking-wider">CONFIGURE COLUMNS</button>
-            </div>
-            <div className="grid grid-cols-[184px_1fr] h-fit">
-                <div className="flex flex-col pt-[82px]">
-                    <PlayerHeader />
-                    <PlayerCard name="ERLING HAALAND" />
-                </div>
-                <div className="flex flex-col overflow-auto">
-                    <DetailsHeader />
-                    <DetailsCard />
-                </div>
-            </div>
+        <div>
+
         </div>
+        // <div className="grid gap-[32px] mt-[57px]">
+        //     <div className="flex justify-center gap-[8px] w-[176px] h-[36px] bg-custom-pink">
+        //         <Image
+        //             src="/assets/image/ConfigureButton.svg"
+        //             alt="button"
+        //             width={18}
+        //             height={18}
+        //         />
+        //         <button className="font-bebas tracking-wider">CONFIGURE COLUMNS</button>
+        //     </div>
+        //     <div className="grid grid-cols-[184px_1fr] h-fit">
+        //         <div className="flex flex-col pt-[82px]">
+        //             <PlayerHeader />
+        //             <PlayerCard name="ERLING HAALAND" />
+        //         </div>
+        //         <div className="flex flex-col overflow-auto">
+        //             <DetailsHeader />
+        //             <DetailsCard />
+        //         </div>
+        //     </div>
+        // </div>
     );
 }
 
