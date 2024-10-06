@@ -4,8 +4,21 @@ import Image from "next/image";
 import SearchFilter from "../searchFilter/searchFilter";
 import Table from "@/components/table";
 import Navbar from "../navbar/Navbar";
+import axios from "axios";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  // const fetchData = async () => {
+  //   const { data } = await axios.get(
+  //     "https://toc-backend.codespacebar.com/api/teams"
+  //   );
+
+  //   console.log(data);
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // });
   const players = [
     {
       name: "Lionel Messi",
@@ -154,7 +167,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       <Image
         src="/assets/image/header.svg"
         alt="home-header"
@@ -162,7 +175,7 @@ const HomePage = () => {
         height={500}
       />
 
-      <div className="absolute top-[20%] left-[10%] flex flex-col text-wrap gap-12 w-[38%]">
+      <div className="absolute top-60 left-[10%] flex flex-col text-wrap gap-12 w-[38%]">
         <div className="font-racing text-[64px] relative">
           <p>Premier League Players</p>
           <p className="text-transparent text-stroke-2-white absolute top-12">
@@ -183,10 +196,8 @@ const HomePage = () => {
 
       <Navbar />
 
-      <div className="flex justify-center">
-        <div className="w-[1120px]">
-          <Table data={players} showSearch />
-        </div>
+      <div className="flex justify-center p-20">
+        <Table data={players} showSearch />
       </div>
     </div>
   );

@@ -173,7 +173,7 @@ const ClubPage = () => {
           </p>
         </div>
       </div>
-      <div className="p-20">
+      <div className="pr-10 pl-10">
         <Table data={data} />
       </div>
     </div>

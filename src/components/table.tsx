@@ -110,35 +110,10 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
   };
 
   return (
-    <div className="p-4 w-full">
+    <div className=" w-full">
       {showSearch && (
-        <div className="flex items-center justify-between max-w-full w-full h-[36px]">
-          <div className="flex justify-between gap-[10px] h-full">
-            <div className="relative">
-              <button
-                className="flex items-center font-bebas text-[16px] bg-white text-black px-[15px] h-full border-none rounded-[20px]"
-                onClick={toggleFilter}
-              >
-                FILTERED BY ▼
-              </button>
-              {filterOpen && (
-                <ul className="">
-                  <li>Option 1</li>
-                  <li>Option 2</li>
-                  <li>Option 3</li>
-                </ul>
-              )}
-            </div>
-            <SearchBar value={search} onChange={(value) => setSearch(value)} />
-            <button
-              className="font-bebas bg-custom-green w-[95px] h-[36px] text-black tracking-wider"
-              onClick={handleSearchClick}
-            >
-              SEARCH
-            </button>
-          </div>
-
-          <div className="flex justify-between items-center bg-custom-green h-full w-[163px] px-[16px]">
+        <div className="flex items-center gap-3 max-w-full w-4/5 h-[36px] mb-40">
+          <div className="flex items-center bg-white h-full w-38 gap-3 px-[16px]">
             <button className="font-bebas h-full text-black tracking-wider">
               DOWNLOAD CSV
             </button>
@@ -149,10 +124,19 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
               height={18}
             />
           </div>
+          <div className="flex justify-between gap-[10px] h-full">
+            <SearchBar value={search} onChange={(value) => setSearch(value)} />
+            <button
+              className="font-bebas bg-custom-green w-[95px] h-[36px] text-black tracking-wider"
+              onClick={handleSearchClick}
+            >
+              SEARCH
+            </button>
+          </div>
         </div>
       )}
 
-      <div className="overflow-x-auto no-scrollbar pt-[80px]">
+      <div className="overflow-x-auto no-scrollbar">
         <table
           {...getTableProps()}
           className="table-auto bg-black"
