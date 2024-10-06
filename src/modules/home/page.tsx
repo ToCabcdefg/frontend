@@ -5,7 +5,6 @@ import SearchFilter from "../searchFilter/searchFilter";
 import Table from "@/components/table";
 import Navbar from "../navbar/Navbar";
 
-
 const HomePage = () => {
   const players = [
     {
@@ -24,9 +23,8 @@ const HomePage = () => {
         "UEFA Champions League Winner (4x)",
       ],
       appearances: 1045,
-      goals: 804,
-      wins: 721,
-      losses: 187,
+      goals_cleansheets: 804,
+      minute_played: 721,
     },
     {
       name: "Cristiano Ronaldo",
@@ -37,16 +35,21 @@ const HomePage = () => {
       position: "Forward",
       number: 7,
       salary: "$60 million",
-      club_history: ["Sporting CP", "Manchester United", "Real Madrid", "Juventus", "Al Nassr"],
+      club_history: [
+        "Sporting CP",
+        "Manchester United",
+        "Real Madrid",
+        "Juventus",
+        "Al Nassr",
+      ],
       awards: [
         "Ballon d'Or (5x)",
         "UEFA Champions League Winner (5x)",
         "UEFA Euro Winner",
       ],
       appearances: 1145,
-      goals: 847,
-      wins: 743,
-      losses: 202,
+      goals_cleansheets: 847,
+      minute_played: 743,
     },
     {
       name: "Neymar Jr.",
@@ -64,9 +67,8 @@ const HomePage = () => {
         "Copa Libertadores Winner",
       ],
       appearances: 615,
-      goals: 420,
-      wins: 422,
-      losses: 98,
+      goals_cleansheets: 420,
+      minute_played: 422,
     },
     {
       name: "Kylian Mbappé",
@@ -84,9 +86,8 @@ const HomePage = () => {
         "UEFA Champions League Runner-up",
       ],
       appearances: 351,
-      goals: 274,
-      wins: 257,
-      losses: 44,
+      goals_cleansheets: 274,
+      minute_played: 257,
     },
     {
       name: "Kevin De Bruyne",
@@ -104,9 +105,8 @@ const HomePage = () => {
         "FIFA FIFPro World XI",
       ],
       appearances: 600,
-      goals: 125,
-      wins: 420,
-      losses: 82,
+      goals_cleansheets: 125,
+      minute_played: 420,
     },
     {
       name: "Virgil van Dijk",
@@ -124,9 +124,8 @@ const HomePage = () => {
         "UEFA Champions League Winner",
       ],
       appearances: 487,
-      goals: 49,
-      wins: 312,
-      losses: 78,
+      goals_cleansheets: 49,
+      minute_played: 312,
     },
     {
       name: "Robert Lewandowski",
@@ -137,19 +136,22 @@ const HomePage = () => {
       position: "Forward",
       number: 9,
       salary: "$35 million",
-      club_history: ["Lech Poznań", "Borussia Dortmund", "Bayern Munich", "Barcelona"],
+      club_history: [
+        "Lech Poznań",
+        "Borussia Dortmund",
+        "Bayern Munich",
+        "Barcelona",
+      ],
       awards: [
         "FIFA Best Men's Player",
         "European Golden Shoe (2x)",
         "UEFA Champions League Winner",
       ],
       appearances: 773,
-      goals: 621,
-      wins: 510,
-      losses: 97,
+      goals_cleansheets: 621,
+      minute_played: 510,
     },
   ];
-
 
   return (
     <div className="relative">
@@ -157,7 +159,7 @@ const HomePage = () => {
         src="/assets/image/header.svg"
         alt="home-header"
         width={2000}
-        height={1000}
+        height={500}
       />
 
       <div className="absolute top-[20%] left-[10%] flex flex-col text-wrap gap-12 w-[38%]">
@@ -177,18 +179,16 @@ const HomePage = () => {
         <button className="font-bebas text-xl bg-custom-green w-24 h-9 text-black">
           START
         </button>
-
       </div>
 
       <Navbar />
 
       <div className="flex justify-center">
         <div className="w-[1120px]">
-          <Table data={players} />
+          <Table data={players} showSearch />
         </div>
       </div>
     </div>
-
   );
 };
 
