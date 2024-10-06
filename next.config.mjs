@@ -9,7 +9,7 @@ const nextConfig = {
                 pathname: '/premierleague/**',
             },
         ],
-        domains: ['resources.premierleague.com'], 
+        domains: ['resources.premierleague.com',"dzmb9yzus0ibn.cloudfront.net"], 
     },
       }
 

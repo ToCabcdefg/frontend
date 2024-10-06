@@ -76,7 +76,7 @@ export default function SearchFilter({ setFilterPlayers }: Props) {
         DOWNLOAD CSV
       </button>
       <div>
-        {filteredPlayers.length > 0 ? (
+        {/* {filteredPlayers.length > 0 ? (
           <ul>
             {filteredPlayers.map((player) => (
               <li key={player}>{player}</li>
@@ -84,7 +84,7 @@ export default function SearchFilter({ setFilterPlayers }: Props) {
           </ul>
         ) : (
           <p>No players found.</p>
-        )}
+        )} */}
       </div>
 
       {/* <button className={styles.configureColumnsButton}>
