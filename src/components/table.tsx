@@ -197,15 +197,17 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                       {Array.isArray(cell.value) ? (
                         <td
                           {...cell.getCellProps()}
-                          className="px-4 py-2 font-bayon tracking-wider text-xl font-normal align-top whitespace-nowrap"
+                          className="px-4 py-4 font-bayon tracking-wider text-xl font-normal align-top whitespace-nowrap"
                         >
                           {cell.value.map((item: string, index: number) => (
                             <div key={index}>{item}</div>
                           ))}
                         </td>
                       ) : cell.column.Header === "CLUB" ? (
-                        <td className="flex items-center gap-2 ">
-                          <div>{cell.value.club_name}</div>
+                        <td className="flex items-center gap-2 py-4">
+                          <div className="whitespace-nowrap">
+                            {cell.value.club_name}
+                          </div>
                           <div>
                             <Image
                               src={cell.value.club_logo}
@@ -218,7 +220,7 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                       ) : (
                         <td
                           {...cell.getCellProps()}
-                          className={`px-4 py-2 font-bayon tracking-wider text-xl align-top whitespace-nowrap ${
+                          className={`px-4 py-4 font-bayon tracking-wider text-xl align-top whitespace-nowrap ${
                             cell.column.Header === "NAME"
                               ? "hover:text-custom-pink sticky hover:cursor-pointer left-0 z-10 bg-black"
                               : cell.column.Header === "APPEARANCES" ||
@@ -230,7 +232,7 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                           key={cell.value}
                           onClick={
                             cell.column.Header === "NAME"
-                              ? () => router.replace("/profile")
+                              ? () => router.push(`/profile/${cell.value}`)
                               : cell.column.Header === "CLUB"
                               ? () => router.replace("/club")
                               : () => console.log("click")

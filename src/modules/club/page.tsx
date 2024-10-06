@@ -31,7 +31,7 @@ type PlayerData = {
 
 type ClubDetail = {
   club_name: string;
-  team_logo: string;
+  club_logo: string;
   players: PlayerData[];
 };
 
@@ -77,7 +77,7 @@ const ClubPage = ({ club_name }: Props) => {
             </div>
             <div>
               <Image
-                src={clubDetail.team_logo ? clubDetail.team_logo : ""}
+                src={clubDetail.club_logo ? clubDetail.club_logo : ""}
                 height={140}
                 width={140}
                 alt="club-header"
@@ -90,9 +90,9 @@ const ClubPage = ({ club_name }: Props) => {
               </p>
             </div>
           </div>
-          {/* <div className="pr-10 pl-10">
-        {clubDetail && <Table data={clubDetail.players} />}
-      </div> */}
+          <div className="pr-10 pl-10">
+            {clubDetail && <Table data={clubDetail.players} />}
+          </div>
         </div>
       )}
     </>
