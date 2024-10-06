@@ -31,7 +31,42 @@ body {
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.navbar {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 260%;
+  animation: scroll 30s linear infinite;
+}
+
+.logos {
+  display: flex;
+  white-space: nowrap;
+
+}
+
+.logos img {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+  transition: transform 0.3s;
+}
+
+.logos img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-60.7%);
   }
 }

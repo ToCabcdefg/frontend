@@ -1,0 +1,89 @@
+/* Container for the search filter */
+.searchFilterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Center the child elements */
+  /* background-color: #000; */
+  padding: 10px;
+  max-width: 100%;
+  width: 100%;
+  /* Make the container take full width */
+}
+
+/* Dropdown styles */
+.filterDropdown {
+  position: relative;
+}
+
+.filterButton {
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+  border-radius: 0px;
+  font-weight: bold;
+  /* Make filter button text bold */
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: black;
+  list-style-type: none;
+  padding: 5px 0;
+}
+
+.dropdownMenu li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background-color: grey;
+}
+
+/* Search input */
+.searchInput {
+  padding: 10px;
+  margin: 0 10px;
+  border: none;
+  background-color: #fff;
+  width: 50%;
+}
+
+/* Button styles */
+.searchButton {
+  background-color: #00ff00;
+  border: none;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  /* Make search button text bold */
+}
+
+.csvButton {
+  background-color: #00ff00;
+  border: none;
+  padding: 10px;
+  color: black;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  /* Make CSV button text bold */
+}
+
+.configureColumnsButton {
+  background-color: #ff007f;
+  border: none;
+  padding: 10px;
+  color: white;
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  /* Make configure columns button text bold */
+}
