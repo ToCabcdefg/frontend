@@ -1,57 +1,56 @@
 "use client";
+
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-// Define types for seasons and awards
-export type Season = {
-  year: string;
-  clubLogo: string;
-  clubName: string;
+type ClubData = {
+  club_name: string;
+  club_logo: string;
 };
 
-export type Award = {
-  title: string;
-  total: number;
-};
-
-export type ProfileProps = {
-  playerImage: string;
-  clubLogo: string;
+type PlayerData = {
+  image_url: string;
   flagImage: string;
-  jerseyNumber: number;
-  playerName: string;
-  clubName: string;
+  club: ClubData;
+  number: number;
+  name: string;
   position: string;
   salary: string;
-  dateOfBirth: string;
-  age: number;
+  date_of_birth: string;
   height: number;
   appearances: number;
-  goals: number;
-  Minutes: number;
-  seasons: Season[];
-  awards: Award[];
+  goals_cleansheets: number;
+  minute_played: number;
+  club_history: string[];
+  awards: string[];
 };
 
-const ProfilePage = ({
-  playerImage,
-  clubLogo,
-  flagImage,
-  jerseyNumber,
-  playerName,
-  clubName,
-  position,
-  salary,
-  dateOfBirth,
-  age,
-  height,
-  appearances,
-  goals,
-  Minutes,
-  seasons,
-  awards,
-}: ProfileProps) => {
+type Props = {
+  playerName: string;
+};
+
+const ProfilePage = ({ playerName }: Props) => {
   const router = useRouter();
+  const [playerData, setPlayerData] = useState<PlayerData | null>(null);
+
+  const fetchData = async (playerName: string) => {
+    const { data } = await axios.get(
+      `https://toc-backend.codespacebar.com/api/player/${playerName}`
+    );
+    console.log(data[0]);
+    setPlayerData(data[0]);
+  };
+
+  useEffect(() => {
+    fetchData(playerName);
+  }, [playerName]);
+
+  if (!playerData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-screen h-screen bg-black">
       <div className="flex justify-center relative w-full h-auto">
@@ -78,7 +77,7 @@ const ProfilePage = ({
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center tracking-wider">
-        <div className="flex flex-row justify-between gap-10 items-start p-16 isolate absolute  bg-gradient-to-r from-transparent to-gray-300/25 backdrop-blur-md rounded-3xl">
+        <div className="flex flex-row justify-between gap-10 items-start p-16 isolate absolute bg-gradient-to-r from-transparent to-gray-300/25 backdrop-blur-md rounded-3xl">
           <div className="absolute w-[47px] h-[47px] left-[24px] top-[35px] flex-none order-1 flex-grow-0 z-1">
             <Image
               src="/assets/image/green-back.svg"
@@ -96,48 +95,56 @@ const ProfilePage = ({
             <div className="flex flex-row items-center">
               <div>
                 <Image
-                  src={playerImage}
+                  src={playerData.image_url ? playerData.image_url : ""}
                   alt="player"
                   width="315"
                   height="315"
                 />
               </div>
               <div className="flex flex-col justify-start items-center gap-3">
-                <Image src={clubLogo} alt="club" width="150" height="150" />
-                <Image src={flagImage} alt="flag" width="62" height="41" />
-                <h1 className="font-bayon text-8xl">#{jerseyNumber}</h1>
+                <Image
+                  src={playerData.club.club_logo ? playerData.club.club_logo : ""}
+                  alt="club"
+                  width="150"
+                  height="150"
+                />
+                <Image
+                  src={playerData.flagImage ? playerData.flagImage : ""}
+                  alt="flag"
+                  width="62"
+                  height="41"
+                />
+                <h1 className="font-bayon text-8xl">#{playerData.number}</h1>
               </div>
             </div>
             {/* Player Info */}
             <div className="flex flex-col">
-              <h1 className="font-bayon text-7xl mt-5">{playerName}</h1>
+              <h1 className="font-bayon text-7xl mt-5">{playerData.name ? playerData.name : ""}</h1>
               <div className="flex flex-row gap-2 mb-3 items-center">
                 <button className="bg-custom-pink h-10 font-bayon text-xl text-white px-2 py-1 justify-center items-center rounded-sm">
-                  {clubName}
+                  {playerData.club.club_name ? playerData.club.club_name : ""}
                 </button>
                 <h1 className="bg-custom-green h-10 font-bayon text-xl text-black px-2 py-1 justify-center items-center rounded-sm">
-                  {position}
+                  {playerData.position ? playerData.position : ""}
                 </h1>
               </div>
               <div className="flex flex-row gap-2">
                 <p className="font-bayon text-white text-lg">weekly salary:</p>
                 <p className="font-bayon text-custom-green text-lg">
-                  £ {salary}
+                  £ {playerData.salary ? playerData.salary : ""}
                 </p>
               </div>
               <div className="flex flex-row gap-5">
                 <div className="flex flex-row gap-2">
-                  <p className="font-bayon text-white text-lg">
-                    Date of Birth:
-                  </p>
+                  <p className="font-bayon text-white text-lg">Date of Birth:</p>
                   <p className="font-bayon text-custom-green text-lg">
-                    {dateOfBirth} ({age})
+                    {playerData.date_of_birth ? playerData.date_of_birth : ""}
                   </p>
                 </div>
                 <div className="flex flex-row gap-2">
                   <p className="font-bayon text-white text-lg">height:</p>
                   <p className="font-bayon text-custom-green text-lg">
-                    {height} cm
+                    {playerData.height ? playerData.height : ""} cm
                   </p>
                 </div>
               </div>
@@ -152,17 +159,17 @@ const ProfilePage = ({
               <div className="flex flex-col gap-5 justify-center items-center">
                 <h3 className="font-bayon text-white text-2xl">Appearances</h3>
                 <h3 className="font-bayon text-custom-green text-8xl">
-                  {appearances}
+                  {playerData.appearances ? playerData.appearances : ""}
                 </h3>
               </div>
 
-              {/* Column 2: Goals */}
+              {/* Column 2: Goals / Clean Sheets */}
               <div className="flex flex-col gap-5 justify-center items-center">
                 <h3 className="font-bayon text-white text-2xl whitespace-nowrap">
                   Goals / Clean Sheets
                 </h3>
                 <h3 className="font-bayon text-custom-green text-8xl">
-                  {goals}
+                  {playerData.goals_cleansheets ? playerData.goals_cleansheets : ""}
                 </h3>
               </div>
 
@@ -172,35 +179,23 @@ const ProfilePage = ({
                   Minutes Played
                 </h3>
                 <h3 className="font-bayon text-custom-green text-8xl">
-                  {Minutes}
+                  {playerData.minute_played ? playerData.minute_played : ""}
                 </h3>
               </div>
             </div>
 
-            {/* Seasons */}
+            {/* Club History */}
             <div className="flex flex-col gap-2">
-              {seasons.map((season, index) => (
-                <div key={index} className="flex flex-row gap-10 items-center">
-                  <p className="text-2xl font-bayon text-custom-green">
-                    {season.year}
-                  </p>
-                  <div className="flex flex-row items-center gap-5">
-                    <Image
-                      src={season.clubLogo}
-                      alt="club"
-                      width="40"
-                      height="40"
-                    />
-                    <p className="text-2xl font-bayon text-white">
-                      {season.clubName}
-                    </p>
-                  </div>
+              {playerData.club_history && playerData.club_history.map((club, index) => (
+                <div key={index} className="text-2xl font-bayon text-white">
+                  {club}
                 </div>
               ))}
             </div>
+
             {/* Awards */}
             <div className="flex flex-col gap-3">
-              {awards.map((award, index) => (
+              {playerData.awards && playerData.awards.map((award, index) => (
                 <div key={index} className="flex flex-row items-center gap-5">
                   <Image
                     src="/assets/image/prize.svg"
@@ -208,9 +203,7 @@ const ProfilePage = ({
                     width="40"
                     height="40"
                   />
-                  <p className="text-2xl font-bayon text-white">
-                    {award.title} ({award.total})
-                  </p>
+                  <p className="text-2xl font-bayon text-white">{award}</p>
                 </div>
               ))}
             </div>
