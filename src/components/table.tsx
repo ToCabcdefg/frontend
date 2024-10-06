@@ -13,12 +13,17 @@ import SearchBar from "./search-bar";
 import Image from "next/image";
 import { useState } from "react";
 
-interface Data {
+type ClubData = {
+  club_name: string;
+  club_logo: string;
+};
+
+type PlayerData = {
   name: string;
   nationality: string;
   date_of_birth: string;
   height: number;
-  club: string;
+  club: ClubData;
   position: string;
 
   number: number;
@@ -28,9 +33,9 @@ interface Data {
   appearances: number;
   goals_cleansheets: number;
   minute_played: number;
-}
+};
 
-const columns: Column<Data>[] = [
+const columns: Column<PlayerData>[] = [
   {
     Header: "NAME",
     columns: [{ Header: "NAME", accessor: "name" }],
@@ -65,7 +70,7 @@ const columns: Column<Data>[] = [
 ];
 
 interface MyTableProps {
-  data: Data[];
+  data: PlayerData[];
   showSearch?: boolean;
 }
 
@@ -79,14 +84,16 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
     prepareRow,
     state,
     setGlobalFilter,
-  } = useTable<Data>(
+  } = useTable<PlayerData>(
     {
       columns,
       data,
     },
     useGlobalFilter,
     useSortBy
-  ) as TableInstance<Data> & { setGlobalFilter: (filterValue: string) => void };
+  ) as TableInstance<PlayerData> & {
+    setGlobalFilter: (filterValue: string) => void;
+  };
 
   const [filterOpen, setFilterOpen] = useState(false);
   const [search, setSearch] = useState<string>("");
@@ -196,6 +203,8 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                             <div key={index}>{item}</div>
                           ))}
                         </td>
+                      ) : cell.column.Header === "CLUB" ? (
+                        <td></td>
                       ) : (
                         <td
                           {...cell.getCellProps()}

@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // Define types for seasons and awards
 export type Season = {
@@ -12,9 +14,7 @@ export type Award = {
   total: number;
 };
 
-
 export type ProfileProps = {
-  headerImage: string;
   playerImage: string;
   clubLogo: string;
   flagImage: string;
@@ -28,14 +28,12 @@ export type ProfileProps = {
   height: number;
   appearances: number;
   goals: number;
-  Minutes : number;
+  Minutes: number;
   seasons: Season[];
   awards: Award[];
 };
 
-
 const ProfilePage = ({
-  headerImage,
   playerImage,
   clubLogo,
   flagImage,
@@ -49,36 +47,60 @@ const ProfilePage = ({
   height,
   appearances,
   goals,
-  Minutes ,
+  Minutes,
   seasons,
   awards,
 }: ProfileProps) => {
+  const router = useRouter();
   return (
     <div className="w-screen h-screen bg-black">
       <div className="flex justify-center relative w-full h-auto">
         {/* Header Image */}
         <div className="relative w-full h-[50vh]">
-          <Image src={headerImage} alt="profile-header" layout="fill" objectFit="cover" />
+          <Image
+            src="/assets/image/profile-header.svg"
+            alt="profile-header"
+            layout="fill"
+            objectFit="cover"
+          />
           <div className="absolute inset-0 bg-black bg-opacity-70"></div>
         </div>
         {/* Shadow Image */}
         <div className="absolute left-0 right-0 bottom-[-30%] w-full">
-          <Image src="/assets/image/black-shadow.svg" alt="profile-shadow" layout="responsive" width={2000} height={1000} />
+          <Image
+            src="/assets/image/black-shadow.svg"
+            alt="profile-shadow"
+            layout="responsive"
+            width={2000}
+            height={1000}
+          />
         </div>
       </div>
-      
+
       <div className="absolute inset-0 flex items-center justify-center tracking-wider">
         <div className="flex flex-row justify-between gap-10 items-start p-16 isolate absolute  bg-gradient-to-r from-transparent to-gray-300/25 backdrop-blur-md rounded-3xl">
-        <div className="absolute w-[47px] h-[47px] left-[24px] top-[35px] flex-none order-1 flex-grow-0 z-1">
-          <Image src="/assets/image/green-back.svg" alt="back" width="50" height="50" />
-        </div>
-          
+          <div className="absolute w-[47px] h-[47px] left-[24px] top-[35px] flex-none order-1 flex-grow-0 z-1">
+            <Image
+              src="/assets/image/green-back.svg"
+              alt="back"
+              width="50"
+              height="50"
+              className="cursor-pointer"
+              onClick={() => router.back()}
+            />
+          </div>
+
           {/* Column 1 */}
           <div className="flex flex-col justify-start items-start">
             {/* Player Details */}
             <div className="flex flex-row items-center">
               <div>
-              <Image src={playerImage} alt="player" width="315" height="315" />
+                <Image
+                  src={playerImage}
+                  alt="player"
+                  width="315"
+                  height="315"
+                />
               </div>
               <div className="flex flex-col justify-start items-center gap-3">
                 <Image src={clubLogo} alt="club" width="150" height="150" />
@@ -99,18 +121,24 @@ const ProfilePage = ({
               </div>
               <div className="flex flex-row gap-2">
                 <p className="font-bayon text-white text-lg">weekly salary:</p>
-                <p className="font-bayon text-custom-green text-lg">£ {salary}</p>
+                <p className="font-bayon text-custom-green text-lg">
+                  £ {salary}
+                </p>
               </div>
               <div className="flex flex-row gap-5">
                 <div className="flex flex-row gap-2">
-                  <p className="font-bayon text-white text-lg">Date of Birth:</p>
+                  <p className="font-bayon text-white text-lg">
+                    Date of Birth:
+                  </p>
                   <p className="font-bayon text-custom-green text-lg">
                     {dateOfBirth} ({age})
                   </p>
                 </div>
                 <div className="flex flex-row gap-2">
                   <p className="font-bayon text-white text-lg">height:</p>
-                  <p className="font-bayon text-custom-green text-lg">{height} cm</p>
+                  <p className="font-bayon text-custom-green text-lg">
+                    {height} cm
+                  </p>
                 </div>
               </div>
             </div>
@@ -123,19 +151,29 @@ const ProfilePage = ({
               {/* Column 1: Appearances */}
               <div className="flex flex-col gap-5 justify-center items-center">
                 <h3 className="font-bayon text-white text-2xl">Appearances</h3>
-                <h3 className="font-bayon text-custom-green text-8xl">{appearances}</h3>
+                <h3 className="font-bayon text-custom-green text-8xl">
+                  {appearances}
+                </h3>
               </div>
 
               {/* Column 2: Goals */}
               <div className="flex flex-col gap-5 justify-center items-center">
-                <h3 className="font-bayon text-white text-2xl whitespace-nowrap">Goals / Clean Sheets</h3>
-                <h3 className="font-bayon text-custom-green text-8xl">{goals}</h3>
+                <h3 className="font-bayon text-white text-2xl whitespace-nowrap">
+                  Goals / Clean Sheets
+                </h3>
+                <h3 className="font-bayon text-custom-green text-8xl">
+                  {goals}
+                </h3>
               </div>
 
               {/* Column 3: Minutes Played */}
               <div className="flex flex-col gap-5 justify-center items-center">
-                <h3 className="font-bayon text-white text-2xl">Minutes Played</h3>
-                <h3 className="font-bayon text-custom-green text-8xl">{Minutes }</h3>
+                <h3 className="font-bayon text-white text-2xl">
+                  Minutes Played
+                </h3>
+                <h3 className="font-bayon text-custom-green text-8xl">
+                  {Minutes}
+                </h3>
               </div>
             </div>
 
@@ -143,10 +181,19 @@ const ProfilePage = ({
             <div className="flex flex-col gap-2">
               {seasons.map((season, index) => (
                 <div key={index} className="flex flex-row gap-10 items-center">
-                  <p className="text-2xl font-bayon text-custom-green">{season.year}</p>
+                  <p className="text-2xl font-bayon text-custom-green">
+                    {season.year}
+                  </p>
                   <div className="flex flex-row items-center gap-5">
-                    <Image src={season.clubLogo} alt="club" width="40" height="40" />
-                    <p className="text-2xl font-bayon text-white">{season.clubName}</p>
+                    <Image
+                      src={season.clubLogo}
+                      alt="club"
+                      width="40"
+                      height="40"
+                    />
+                    <p className="text-2xl font-bayon text-white">
+                      {season.clubName}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -155,8 +202,15 @@ const ProfilePage = ({
             <div className="flex flex-col gap-3">
               {awards.map((award, index) => (
                 <div key={index} className="flex flex-row items-center gap-5">
-                  <Image src="/assets/image/prize.svg" alt="award" width="40" height="40" />
-                  <p className="text-2xl font-bayon text-white">{award.title} ({award.total})</p>
+                  <Image
+                    src="/assets/image/prize.svg"
+                    alt="award"
+                    width="40"
+                    height="40"
+                  />
+                  <p className="text-2xl font-bayon text-white">
+                    {award.title} ({award.total})
+                  </p>
                 </div>
               ))}
             </div>

@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Table from "../../components/table";
+import { useRouter } from "next/navigation";
 
 const ClubPage = () => {
+  const router = useRouter();
   const data = [
     {
       name: "Lionel Messi",
@@ -153,11 +157,21 @@ const ClubPage = () => {
     <div className="relative">
       <Image
         src="/assets/image/club-header.svg"
-        alt="home-header"
+        alt="club-bg"
         width={2000}
-        height={500}
+        height={300}
       />
-      <div className="flex gap-8 absolute top-40 left-[10%]">
+      <div className="flex gap-8 absolute top-48 left-[10%]">
+        <div>
+          <Image
+            src="/assets/image/green-back.svg"
+            alt="back"
+            width="50"
+            height="50"
+            className="cursor-pointer relative top-1/3"
+            onClick={() => router.back()}
+          />
+        </div>
         <div>
           <Image
             src="/assets/image/Chelsea.svg"
