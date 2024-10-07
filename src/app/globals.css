@@ -24,6 +24,7 @@ body {
   background: var(--background);
   font-family: var(--font-bayon);
   letter-spacing: 2px;
+  color: white;
 }
 
 @layer utilities {
