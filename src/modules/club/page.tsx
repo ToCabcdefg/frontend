@@ -64,7 +64,8 @@ const ClubPage = ({ club_name }: Props) => {
             width={2000}
             height={300}
           />
-          <div className="flex gap-8 absolute top-48 left-[10%]">
+
+          <div className="flex justify-center items-center gap-8 absolute top-48 left-[10%]">
             <div>
               <Image
                 src="/assets/image/green-back.svg"
@@ -83,9 +84,12 @@ const ClubPage = ({ club_name }: Props) => {
                 alt="club-header"
               />
             </div>
-            <div className="font-racing text-[64px] ">
-              <p>{clubDetail.club_name ? clubDetail.club_name : ""}</p>
-              <p className="text-transparent text-stroke-2-white absolute top-12">
+
+            <div className="font-racing text-[64px] leading-none">
+              <p className="m-0">
+                {clubDetail.club_name ? clubDetail.club_name : ""}
+              </p>
+              <p className="text-transparent text-stroke-2-white m-0">
                 Players
               </p>
             </div>

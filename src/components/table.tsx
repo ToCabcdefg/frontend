@@ -147,7 +147,7 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
         <table
           {...getTableProps()}
           className="table-auto bg-black"
-          style={{ minWidth: "2000px" }}
+          style={{ tableLayout: "auto", minWidth: "2000px" }}
         >
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -155,7 +155,7 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                 {headerGroup.headers.map((column: any) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className={`min-w-[180px] pl-4 text-left text-custom-green font-bayon tracking-wider text-xl font-normal whitespace-nowrap ${
+                    className={`min-w-[240px] pl-4 text-left text-custom-green font-bayon tracking-wider text-xl font-normal whitespace-nowrap ${
                       column.Header === "NAME"
                         ? "sticky left-0 z-10 bg-black"
                         : ""
@@ -204,11 +204,9 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                           ))}
                         </td>
                       ) : cell.column.Header === "CLUB" ? (
-                        <td className="flex items-center gap-2 py-4">
-                          <div className="whitespace-nowrap">
+                        <td>
+                          <div className="whitespace-nowrap flex items-center gap-2 py-4">
                             {cell.value.club_name}
-                          </div>
-                          <div>
                             <Image
                               src={cell.value.club_logo}
                               width={30}

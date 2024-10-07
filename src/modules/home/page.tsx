@@ -6,6 +6,7 @@ import Table from "@/components/table";
 import Navbar from "../navbar/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Style from "./home.module.css";
 
 type ClubData = {
   club_name: string;
@@ -68,12 +69,14 @@ const HomePage = () => {
           place!
         </p>
 
-        <button className="font-bebas text-xl bg-custom-green w-24 h-9 text-black">
+        <a className={Style.startButton} href="#navbar">
           START
-        </button>
+        </a>
       </div>
 
-      <Navbar />
+      <div id="navbar">
+        <Navbar />
+      </div>
 
       <SearchFilter setPlayers={setPlayers} />
 
