@@ -54,7 +54,7 @@ const HomePage = () => {
         height={500}
       />
 
-      <div className="absolute top-60 left-[10%] flex flex-col text-wrap gap-12 w-[38%]">
+      <div className="absolute top-60 left-[10%] flex flex-col text-wrap gap-12 w-[760px]">
         <div className="font-racing text-[64px] relative">
           <p>Premier League Players</p>
           <p className="text-transparent text-stroke-2-white absolute top-12">

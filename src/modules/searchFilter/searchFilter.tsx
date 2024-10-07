@@ -2,6 +2,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./SearchFilter.module.css"; // Import the CSS module
 import axios from "axios";
+import Image from "next/image";
 
 type ClubData = {
   club_name: string;
@@ -78,19 +79,30 @@ export default function SearchFilter({ setPlayers }: Props) {
 
   return (
     <div className={styles.searchFilterContainer}>
-      <input
-        type="text"
-        className={styles.searchInput}
-        placeholder="Find your favorite player..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <button className={styles.searchButton} onClick={handleOnClick}>
-        SEARCH
-      </button>
-      <button className={styles.csvButton} onClick={downloadCSV}>
-        DOWNLOAD CSV
-      </button>
+      <div className="w-full flex justify-between px-20 pt-5">
+        <div className="flex w-1/2">
+          <input
+            type="text"
+            className={styles.searchInput}
+            placeholder="Find your favorite player..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <button className={styles.searchButton} onClick={handleOnClick}>
+            SEARCH
+          </button>
+        </div>
+
+        <button className={styles.csvButton} onClick={downloadCSV}>
+          DOWNLOAD CSV
+          <Image
+            width={18}
+            height={18}
+            src="/assets/icon/download-csv.svg"
+            alt="download-csv"
+          />
+        </button>
+      </div>
       <div>
         {/* {filteredPlayers.length > 0 ? (
           <ul>
