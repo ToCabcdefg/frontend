@@ -1,6 +1,6 @@
 "use client";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import styles from "./SearchFilter.module.css"; // Import the CSS module
+import styles from "./searchFilter.module.css"; // Import the CSS module
 import axios from "axios";
 import Image from "next/image";
 
