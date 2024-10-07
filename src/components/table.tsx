@@ -143,7 +143,7 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
         </div>
       )}
 
-      <div className="overflow-x-auto no-scrollbar">
+      <div className="overflow-x-auto no-scrollbar h-[700px] overflow-y-auto">
         <table
           {...getTableProps()}
           className="table-auto bg-black"
@@ -155,9 +155,9 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                 {headerGroup.headers.map((column: any) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className={`min-w-[240px] pl-4 text-left text-custom-green font-bayon tracking-wider text-xl font-normal whitespace-nowrap ${
+                    className={`min-w-[240px] pl-4 text-left text-custom-green font-bayon tracking-wider text-xl font-normal whitespace-nowrap sticky top-0 z-10 bg-black ${
                       column.Header === "NAME"
-                        ? "sticky left-0 z-10 bg-black"
+                        ? "sticky left-0 z-20 bg-black"
                         : ""
                     }`}
                     key={column.id}

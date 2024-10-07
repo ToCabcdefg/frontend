@@ -7,6 +7,7 @@ import Navbar from "../navbar/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Style from "./home.module.css";
+import { useRouter } from "next/navigation";
 
 type ClubData = {
   club_name: string;
@@ -31,6 +32,7 @@ type PlayerData = {
 };
 
 const HomePage = () => {
+  const router = useRouter();
   const [players, setPlayers] = useState<PlayerData[] | null>(null);
   const [filterPlayers, setFilterPlayers] = useState<PlayerData[] | null>(null);
   const fetchData = async () => {
@@ -69,9 +71,45 @@ const HomePage = () => {
           place!
         </p>
 
-        <a className={Style.startButton} href="#navbar">
-          START
-        </a>
+        <div className="flex gap-6">
+          <button
+            className={Style.startButton}
+            onClick={(e) => {
+              e.preventDefault();
+              const navbarElement = document.getElementById("navbar");
+              if (navbarElement) {
+                navbarElement.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            }}
+          >
+            START
+          </button>
+
+          <button
+            className="flex items-center gap-2"
+            onClick={() =>
+              router.replace("https://github.com/orgs/ToCabcdefg/repositories")
+            }
+          >
+            <Image
+              src="/assets/icon/github.svg"
+              width={36}
+              height={36}
+              alt="github-icon"
+            />
+            <div className="flex gap-2 text-xl">
+              GITHUB
+              <Image
+                src="/assets/icon/github-arrow.svg"
+                width={10}
+                height={10}
+                alt="github-arrow"
+              />
+            </div>
+          </button>
+        </div>
       </div>
 
       <div id="navbar">
@@ -80,7 +118,7 @@ const HomePage = () => {
 
       <SearchFilter setPlayers={setPlayers} />
 
-      <div className="flex justify-center p-20">
+      <div className="flex justify-center px-20 pt-10">
         {players && <Table data={players} />}
       </div>
     </div>
