@@ -3,26 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   height: screen;
   color: var(--foreground);
   background: var(--background);
-  font-family: var("--font-geist-mono");
+  font-family: var(--font-bayon);
+  letter-spacing: 2px;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.navbar {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 260%;
+  animation: scroll 30s linear infinite;
+}
+
+.logos {
+  display: flex;
+  white-space: nowrap;
+}
+
+.logos img {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+  transition: transform 0.3s;
+}
+
+.logos img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-60.7%);
   }
 }

@@ -1,0 +1,17 @@
+.startButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  background-color: #04f06a;
+  width: 6rem;
+  height: 2.25rem;
+  color: black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.startButton:hover {
+  box-shadow: 0px 0px 19.152px #04f06a, 0px 0px 10.944px #04f06a,
+    0px 0px 6.384px #04f06a, 0px 0px 3.192px #04f06a, 0px 0px 0.912px #04f06a,
+    0px 0px 0.456px #04f06a;
+}
