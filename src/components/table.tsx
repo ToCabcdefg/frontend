@@ -204,8 +204,12 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                           ))}
                         </td>
                       ) : cell.column.Header === "CLUB" ? (
-                        <td>
-                          <div className="whitespace-nowrap flex items-center gap-2 py-4">
+                        <td
+                          onClick={() =>
+                            router.replace(`/club/${cell.value.club_name}`)
+                          }
+                        >
+                          <div className="whitespace-nowrap flex items-center gap-2 py-4 hover:text-custom-pink hover:cursor-pointer bg-black">
                             {cell.value.club_name}
                             <Image
                               src={cell.value.club_logo}
@@ -231,9 +235,9 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                           onClick={
                             cell.column.Header === "NAME"
                               ? () => router.push(`/profile/${cell.value}`)
-                              : cell.column.Header === "CLUB"
-                              ? () => router.replace("/club")
-                              : () => console.log("click")
+                              : // : cell.column.Header === "CLUB"
+                                // ? () => console.log('club')
+                                () => console.log(cell.column.Header)
                           }
                         >
                           {cell.render("Cell")}

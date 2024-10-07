@@ -73,7 +73,7 @@ const ClubPage = ({ club_name }: Props) => {
                 width="50"
                 height="50"
                 className="cursor-pointer relative top-1/3"
-                onClick={() => router.back()}
+                onClick={() => router.push("/")}
               />
             </div>
             <div>
