@@ -28,6 +28,6 @@ const playerData = {
   ]
 };
 
-export default function Home() {
-  return <ProfilePage {...playerData} />;
+export default function Home({ params }: { params: { player_name: string } }) {
+  return <ProfilePage playerName={params.player_name} />;
 }
