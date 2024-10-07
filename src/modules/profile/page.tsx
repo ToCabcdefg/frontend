@@ -12,7 +12,6 @@ type ClubData = {
 
 type PlayerData = {
   image_url: string;
-  flagImage: string;
   club: ClubData;
   number: number;
   name: string;
@@ -107,12 +106,6 @@ const ProfilePage = ({ playerName }: Props) => {
                   alt="club"
                   width="150"
                   height="150"
-                />
-                <Image
-                  src={playerData.flagImage ? playerData.flagImage : ""}
-                  alt="flag"
-                  width="62"
-                  height="41"
                 />
                 <h1 className="font-bayon text-8xl">#{playerData.number}</h1>
               </div>
