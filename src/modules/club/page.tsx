@@ -6,32 +6,11 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
-
-type ClubData = {
-  club_name: string;
-  club_logo: string;
-};
-
-type PlayerData = {
-  name: string;
-  nationality: string;
-  date_of_birth: string;
-  height: number;
-  club: ClubData;
-  position: string;
-
-  number: number;
-  salary: string;
-  club_history: string[];
-  awards: string[];
-  appearances: number;
-  goals_cleansheets: number;
-  minute_played: number;
-};
+import { PlayerData } from "../home/page";
 
 type ClubDetail = {
-  club_name: string;
-  club_logo: string;
+  name: string;
+  logo: string;
   players: PlayerData[];
 };
 
@@ -78,7 +57,7 @@ const ClubPage = ({ club_name }: Props) => {
             </div>
             <div>
               <Image
-                src={clubDetail.club_logo ? clubDetail.club_logo : ""}
+                src={clubDetail.logo ? clubDetail.logo : ""}
                 height={140}
                 width={140}
                 alt="club-header"
@@ -86,9 +65,7 @@ const ClubPage = ({ club_name }: Props) => {
             </div>
 
             <div className="font-racing text-[64px] leading-none">
-              <p className="m-0">
-                {clubDetail.club_name ? clubDetail.club_name : ""}
-              </p>
+              <p className="m-0">{clubDetail.name ? clubDetail.name : ""}</p>
               <p className="text-transparent text-stroke-2-white m-0">
                 Players
               </p>

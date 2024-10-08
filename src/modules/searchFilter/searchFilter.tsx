@@ -3,28 +3,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./searchFilter.module.css"; // Import the CSS module
 import axios from "axios";
 import Image from "next/image";
-
-type ClubData = {
-  club_name: string;
-  club_logo: string;
-};
-
-type PlayerData = {
-  name: string;
-  nationality: string;
-  date_of_birth: string;
-  height: number;
-  club: ClubData;
-  position: string;
-
-  number: number;
-  salary: string;
-  club_history: string[];
-  awards: string[];
-  appearances: number;
-  goals_cleansheets: number;
-  minute_played: number;
-};
+import { PlayerData } from "../home/page";
 
 type Props = {
   setPlayers: Dispatch<SetStateAction<PlayerData[] | null>>;
@@ -51,14 +30,18 @@ export default function SearchFilter({ setPlayers }: Props) {
   //   setFilterOpen(!filterOpen);
   // };
 
-  const downloadCSV = () => {
-    const csvContent = "data:text/csv;charset=utf-8,Player Name,Data\n";
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "data.csv");
-    document.body.appendChild(link);
-    link.click();
+  const downloadCSV = async () => {
+    // const csvContent = "data:text/csv;charset=utf-8,Player Name,Data\n";
+    // const encodedUri = encodeURI(csvContent);
+    // const link = document.createElement("a");
+    // link.setAttribute("href", encodedUri);
+    // link.setAttribute("download", "data.csv");
+    // document.body.appendChild(link);
+    // link.click();
+
+    const { data } = await axios.get(
+      `https://toc-backend.codespacebar.com/api/export`
+    );
   };
 
   const filteredPlayers = players
@@ -93,15 +76,17 @@ export default function SearchFilter({ setPlayers }: Props) {
           </button>
         </div>
 
-        <button className={styles.csvButton} onClick={downloadCSV}>
-          DOWNLOAD CSV
-          <Image
-            width={18}
-            height={18}
-            src="/assets/icon/download-csv.svg"
-            alt="download-csv"
-          />
-        </button>
+        <a href="https://toc-backend.codespacebar.com/api/export">
+          <button className={styles.csvButton}>
+            DOWNLOAD CSV
+            <Image
+              width={18}
+              height={18}
+              src="/assets/icon/download-csv.svg"
+              alt="download-csv"
+            />
+          </button>
+        </a>
       </div>
       <div>
         {/* {filteredPlayers.length > 0 ? (

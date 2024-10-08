@@ -17,7 +17,7 @@ export default function Navbar() {
         <img
           src="/assets/image/Arsenal.svg"
           alt="Arsenal"
-          onClick={() => handleOnClick("arsenal")}
+          onClick={() => handleOnClick("Arsenal FC")}
         />
         <img
           src="/assets/image/AstonVilla.svg"
@@ -32,17 +32,17 @@ export default function Navbar() {
         <img
           src="/assets/image/Brenford.svg"
           alt="Brenford"
-          onClick={() => handleOnClick("Brentford")}
+          onClick={() => handleOnClick("Brentford FC")}
         />
         <img
           src="/assets/image/Brighton.svg"
           alt="Brighton"
-          onClick={() => handleOnClick("Brighton and Hove Albion")}
+          onClick={() => handleOnClick("Brighton & Hove Albion")}
         />
         <img
           src="/assets/image/Chelsea.svg"
           alt="Chelsea"
-          onClick={() => handleOnClick("Chelsea")}
+          onClick={() => handleOnClick("Chelsea FC")}
         />
         <img
           src="/assets/image/CrystalP.svg"
@@ -52,12 +52,12 @@ export default function Navbar() {
         <img
           src="/assets/image/Everton.svg"
           alt="Everton"
-          onClick={() => handleOnClick("Everton")}
+          onClick={() => handleOnClick("Everton FC")}
         />
         <img
           src="/assets/image/Fulham.svg"
           alt="Fulham"
-          onClick={() => handleOnClick("Fulham")}
+          onClick={() => handleOnClick("Fulham FC")}
         />
         <img
           src="/assets/image/Ipswich.svg"
@@ -72,7 +72,7 @@ export default function Navbar() {
         <img
           src="/assets/image/Liverpool.svg"
           alt="Liverpool"
-          onClick={() => handleOnClick("Liverpool")}
+          onClick={() => handleOnClick("Liverpool FC")}
         />
         <img
           src="/assets/image/ManCity.svg"
@@ -97,7 +97,7 @@ export default function Navbar() {
         <img
           src="/assets/image/Southampton.svg"
           alt="Southampton"
-          onClick={() => handleOnClick("Southampton")}
+          onClick={() => handleOnClick("Southampton FC")}
         />
         <img
           src="/assets/image/Tottenham.svg"
@@ -117,7 +117,7 @@ export default function Navbar() {
         <img
           src="/assets/image/Arsenal.svg"
           alt="Arsenal"
-          onClick={() => handleOnClick("arsenal")}
+          onClick={() => handleOnClick("Arsenal FC")}
         />
         <img
           src="/assets/image/AstonVilla.svg"
@@ -132,17 +132,17 @@ export default function Navbar() {
         <img
           src="/assets/image/Brenford.svg"
           alt="Brenford"
-          onClick={() => handleOnClick("Brentford")}
+          onClick={() => handleOnClick("Brentford FC")}
         />
         <img
           src="/assets/image/Brighton.svg"
           alt="Brighton"
-          onClick={() => handleOnClick("Brighton and Hove Albion")}
+          onClick={() => handleOnClick("Brighton & Hove Albion")}
         />
         <img
           src="/assets/image/Chelsea.svg"
           alt="Chelsea"
-          onClick={() => handleOnClick("Chelsea")}
+          onClick={() => handleOnClick("Chelsea FC")}
         />
         <img
           src="/assets/image/CrystalP.svg"
@@ -152,12 +152,12 @@ export default function Navbar() {
         <img
           src="/assets/image/Everton.svg"
           alt="Everton"
-          onClick={() => handleOnClick("Everton")}
+          onClick={() => handleOnClick("Everton FC")}
         />
         <img
           src="/assets/image/Fulham.svg"
           alt="Fulham"
-          onClick={() => handleOnClick("Fulham")}
+          onClick={() => handleOnClick("Fulham FC")}
         />
         <img
           src="/assets/image/Ipswich.svg"
@@ -172,7 +172,7 @@ export default function Navbar() {
         <img
           src="/assets/image/Liverpool.svg"
           alt="Liverpool"
-          onClick={() => handleOnClick("Liverpool")}
+          onClick={() => handleOnClick("Liverpool FC")}
         />
         <img
           src="/assets/image/ManCity.svg"

@@ -9,26 +9,30 @@ import { useEffect, useState } from "react";
 import Style from "./home.module.css";
 import { useRouter } from "next/navigation";
 
-type ClubData = {
+export type ClubData = {
   club_name: string;
   club_logo: string;
 };
 
-type PlayerData = {
-  name: string;
-  nationality: string;
-  date_of_birth: string;
-  height: number;
-  club: ClubData;
-  position: string;
-
-  number: number;
-  salary: string;
-  club_history: string[];
-  awards: string[];
+export type PlayerData = {
+  DOB: string;
+  age: string;
   appearances: number;
-  goals_cleansheets: number;
-  minute_played: number;
+  awards: string[];
+  club: ClubData;
+  club_history: string[];
+  foot: string;
+  full_name: string;
+  goals: number;
+  height: string;
+  image_url: string;
+  minutes_played: number;
+  name: string;
+  nationalities: string[];
+  number: string;
+  position: string;
+  profile_link: string;
+  stat_link: string;
 };
 
 const HomePage = () => {

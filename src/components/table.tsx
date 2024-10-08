@@ -12,28 +12,7 @@ import React from "react";
 import SearchBar from "./search-bar";
 import Image from "next/image";
 import { useState } from "react";
-
-type ClubData = {
-  club_name: string;
-  club_logo: string;
-};
-
-type PlayerData = {
-  name: string;
-  nationality: string;
-  date_of_birth: string;
-  height: number;
-  club: ClubData;
-  position: string;
-
-  number: number;
-  salary: string;
-  club_history: string[];
-  awards: string[];
-  appearances: number;
-  goals_cleansheets: number;
-  minute_played: number;
-};
+import { PlayerData } from "@/modules/home/page";
 
 const columns: Column<PlayerData>[] = [
   {
@@ -43,8 +22,8 @@ const columns: Column<PlayerData>[] = [
   {
     Header: "Personal Details", // Group header
     columns: [
-      { Header: "NATIONALITY", accessor: "nationality" },
-      { Header: "DATE OF BIRTH", accessor: "date_of_birth" },
+      { Header: "NATIONALITY", accessor: "nationalities" },
+      { Header: "DATE OF BIRTH", accessor: "DOB" },
       { Header: "HEIGHT (CM)", accessor: "height" },
     ],
   },
@@ -54,7 +33,6 @@ const columns: Column<PlayerData>[] = [
       { Header: "CLUB", accessor: "club" },
       { Header: "POSITION", accessor: "position" },
       { Header: "NUMBER", accessor: "number" },
-      { Header: "SALARY", accessor: "salary" },
       { Header: "CLUB HISTORY", accessor: "club_history" },
       { Header: "AWARDS", accessor: "awards" },
     ],
@@ -63,8 +41,8 @@ const columns: Column<PlayerData>[] = [
     Header: "Stats", // Group header
     columns: [
       { Header: "APPEARANCES", accessor: "appearances" },
-      { Header: "GOALS / CLEAN SHEETS", accessor: "goals_cleansheets" },
-      { Header: "MINUTES PLAYED", accessor: "minute_played" },
+      { Header: "GOALS / CLEAN SHEETS", accessor: "goals" },
+      { Header: "MINUTES PLAYED", accessor: "minutes_played" },
     ],
   },
 ];
@@ -208,8 +186,9 @@ const Table: React.FC<MyTableProps> = ({ data, showSearch = false }) => {
                           onClick={() =>
                             router.replace(`/club/${cell.value.club_name}`)
                           }
+                          className="align-top"
                         >
-                          <div className="whitespace-nowrap flex items-center gap-2 py-4 hover:text-custom-pink hover:cursor-pointer bg-black">
+                          <div className="whitespace-nowrap flex gap-2 py-4 hover:text-custom-pink hover:cursor-pointer bg-black items-center">
                             {cell.value.club_name}
                             <Image
                               src={cell.value.club_logo}
